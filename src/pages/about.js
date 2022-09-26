@@ -1,4 +1,4 @@
-//import Seo from '../components/seo'
+import Seo from '../components/seo'
 import * as React from 'react'
 import Layout from '../components/layout'
 
@@ -10,7 +10,7 @@ const AboutPage = () => {
     )
 }
 
-export const Head = () => <title>About Me</title>
-//export const Head = () => <Seo title="About Page" />
+//export const Head = () => <title>About Me</title>
+export const Head = () => <Seo title="About Page" />
 
 export default AboutPage

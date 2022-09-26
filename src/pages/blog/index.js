@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+//import { graphql } from 'gatsby'
+import Layout from '../../components/layout'
+import { Link, graphql } from 'gatsby'
 //import Seo from '../components/seo'
 
 /*
@@ -12,22 +13,25 @@ const BlogPage = () => {
     )
 }
 */
-//const BlogPage = ({ data }) => {
-//  return (
-//    <Layout pageTitle="My Blog Posts">
-//      <ul>
-//      {
-//        data.allFile.nodes.map(node => (
-//          <li key={node.name}>
-//            {node.name}
-//          </li>
-//        ))
-//      }
-//      </ul>
-//    </Layout>
-//  )
-//}
-//can't do this   data.allMdx.nodes.map((node) => (
+/*
+const BlogPage = ({ data }) => {
+  return (
+    <Layout pageTitle="My Blog Posts">
+      <ul>
+      {
+        data.allFile.nodes.map(node => (
+          <li key={node.name}>
+            {node.name}
+          </li>
+        ))
+      }
+      </ul>
+    </Layout>
+  )
+}
+*/
+/*
+can't do this   data.allMdx.nodes.map((node) => (
 const BlogPage = ({ data }) => {
     return (
         <Layout pageTitle="My Blog Posts">
@@ -37,6 +41,25 @@ const BlogPage = ({ data }) => {
                         <h2>{node.frontmatter.title}</h2>
                         <p>Posted: {node.frontmatter.date}</p>
                         <p>{node.excerpt}</p>
+                    </article>
+                ))
+            }
+        </Layout>
+    )
+}
+*/
+const BlogPage = ({ data }) => {
+    return (
+        <Layout pageTitle="My Blog Posts">
+            {
+                data.allMdx.nodes.map(node => (
+                    <article key={node.id}>
+                        <h2>
+                            <Link to={`/blog/${node.frontmatter.slug}`}>
+                                {node.frontmatter.title}
+                            </Link>
+                        </h2>
+                        <p>Posted: {node.frontmatter.date}</p>
                     </article>
                 ))
             }
@@ -61,6 +84,7 @@ export const query = graphql`
         frontmatter {
           date(formatString: "YYYY MMMM D")
           title
+          slug
         }
         id
         excerpt

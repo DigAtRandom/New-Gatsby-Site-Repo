@@ -18,4 +18,5 @@ const IndexPage = () => {
 
 export const Head = () => <title>Home Page</title>
 //export const Head = () => <Seo title="Homey Page" />
+
 export default IndexPage
